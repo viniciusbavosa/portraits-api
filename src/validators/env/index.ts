@@ -1,6 +1,9 @@
 import { z } from "zod";
 import 'dotenv/config';
 
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
+require('dotenv').config({ path: envFile });
+
 const errorMessage = 'Caracteres não informados';
 
 const envSchema = z.object({
