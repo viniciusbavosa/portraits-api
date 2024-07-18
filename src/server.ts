@@ -6,10 +6,14 @@ import cors from '@fastify/cors';
 
 import { images } from './routes';
 import { signIn } from './routes';
+
+import { env } from './validators';
+
 const app = Fastify({ logger: envToLogger.development ?? true });
 
 app.register(cors, { origin: '*', methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'] });
 app.register(fastifyMultipart);
+
 app.register(images);
 app.register(signIn);
 
